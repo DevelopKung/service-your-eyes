@@ -2,7 +2,6 @@ const config = require("./../config/config");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const Members = db.Members
-const MemberUser = db.MemberUser
 const bcrypt = require("bcrypt");
 const fc = require("../service/function");
 
