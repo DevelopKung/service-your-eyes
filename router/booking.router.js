@@ -6,5 +6,5 @@ router.get('/', booking.findAll );
 router.get('/:id', booking.findOne );
 router.post('/', booking.create );
 router.post('/:id', booking.update );
-router.post('/:id', booking.delete );
+router.get('/d/:id', booking.delete );
 module.exports = router;

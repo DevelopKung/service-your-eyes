@@ -82,7 +82,7 @@ module.exports = {
   delete: async (req, res) => {
     const _id = req.params.id;
     if (_id) {
-      Lists.destroy({ _id }).then(async (data) => {
+      Lists.deleteOne({ _id }).then(async (data) => {
         res.status(200).send({ status: true, message: msg.success })
       }).catch(err => {
         res.status(500).send({ status: false, message: err.message || msg.err });

@@ -67,6 +67,7 @@ module.exports = {
     if (_id && booking_name && booking_lists_id && booking_total && booking_date) {
       const update = { 
         $set: { 
+          booking_name,
           booking_total, 
           booking_lists_id, 
           booking_total, 
@@ -79,7 +80,9 @@ module.exports = {
           updated_date: new Date()
         } 
       }
+      console.log(update);
       Bookings.updateOne({ _id }, update).then(data => {
+        console.log(data);
         if (data.acknowledged) {
           res.status(200).send({ status: true, message: msg.success })
         } else {

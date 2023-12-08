@@ -6,6 +6,6 @@ router.get('/', lists.findAll );
 router.get('/:id', lists.findOne );
 router.post('/', lists.create );
 router.post('/:id', lists.update );
-router.post('/:id', lists.delete );
+router.get('/d/:id', lists.delete );
 
 module.exports = router;
