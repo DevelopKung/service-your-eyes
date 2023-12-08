@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', lists.findAll );
 router.get('/:id', lists.findOne );
 router.post('/', lists.create );
-router.put('/:id', lists.update );
-router.delete('/:id', lists.delete );
+router.post('/:id', lists.update );
+router.post('/:id', lists.delete );
 
 module.exports = router;

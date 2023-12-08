@@ -5,6 +5,6 @@ var router = express.Router();
 router.get('/', booking.findAll );
 router.get('/:id', booking.findOne );
 router.post('/', booking.create );
-router.put('/:id', booking.update );
-router.delete('/:id', booking.delete );
+router.post('/:id', booking.update );
+router.post('/:id', booking.delete );
 module.exports = router;
