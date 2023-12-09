@@ -25,7 +25,12 @@ module.exports = {
         timed: true,
         name: x.booking_name,
         remark: x.booking_remark,
-        total: x.booking_total
+        total: x.booking_total,
+        detail: {
+          discount: x.booking_discount.text,
+          phone: x.booking_phone,
+          social: x.booking_social
+        }
       }))
       
       res.status(200).json({ status: true, message: msg.success, payload })
