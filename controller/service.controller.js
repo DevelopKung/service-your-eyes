@@ -25,8 +25,8 @@ module.exports = {
       const payload = response.map(x => ({
         id: x._id,
         color: x.booking_color,
-        start: moment(x.booking_date),
-        end: moment(x.booking_date).add(1, 'hours'),
+        start: moment(x.booking_date.start),
+        end: moment(x.booking_date.end),
         timed: true,
         name: x.booking_name,
         remark: x.booking_remark,

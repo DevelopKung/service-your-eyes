@@ -80,9 +80,7 @@ module.exports = {
           updated_date: new Date()
         } 
       }
-      console.log(update);
       Bookings.updateOne({ _id }, update).then(data => {
-        console.log(data);
         if (data.acknowledged) {
           res.status(200).send({ status: true, message: msg.success })
         } else {

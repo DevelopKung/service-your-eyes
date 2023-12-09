@@ -18,14 +18,14 @@ module.exports = {
               $and: [
                 {
                   $or: [
-                    { 'booking_date': null },
-                    { 'booking_date': { $gte: start } }
+                    { 'booking_date.start': null },
+                    { 'booking_date.start': { $gte: start } }
                   ]
                 },
                 {
                   $or: [
-                    { 'booking_date': null },
-                    { 'booking_date': { $lte: end } }
+                    { 'booking_date.end': null },
+                    { 'booking_date.end': { $lte: end } }
                   ]
                 }
               ]
@@ -85,11 +85,11 @@ module.exports = {
               booking_discount: 1,
               booking_color: 1,
               booking_remark: 1,
-              booking_date: 1,
+              "booking_date.start": 1,
+              "booking_date.end": 1,
               "booking_lists._id": "$booking_lists._id",
               "booking_lists.lists_id": "$booking_lists.lists_id",
               "booking_lists.lists_name": "$booking_lists.lists_name",
-              "booking_lists.lists_name_en": "$booking_lists.lists_name_en",
               "booking_lists.lists_price": "$booking_lists.lists_price",
               "booking_lists.status": "$booking_lists.status",
               "booking_lists.created_date": "$booking_lists.created_date",
