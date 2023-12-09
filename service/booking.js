@@ -10,8 +10,8 @@ module.exports = {
       // let toDay = moment().utc().startOf('day').toDate()
       let query = []
       if (params) {
-        let start = params.start ? moment(params.start, 'YYYY-MM-DD').startOf('day').toDate(): null
-        let end = params.end ? moment(params.end, 'YYYY-MM-DD').endOf('day').toDate(): null
+        let start = params.start ? moment(params.start, 'YYYY-MM-DD').startOf('day').toDate() : null
+        let end = params.end ? moment(params.end, 'YYYY-MM-DD').endOf('day').toDate() : null
         if (start && end) {
           query.push({
             $match: {
@@ -31,14 +31,26 @@ module.exports = {
               ]
             }
           })
-        }  
-        const response = await Bookings.aggregate(query)
-        return response
-      } else {
-        const response = await Bookings.find().lean()
-        return response
+        }
       }
+
+      query.push({
+        $lookup: {
+          from: db.Lists.collection.collectionName,
+          localField: 'booking_lists_id',
+          foreignField: 'lists_id',
+          as: 'booking_lists'
+        }
+      },
+      {
+        $unwind: {
+          path: "$booking_lists",
+          preserveNullAndEmptyArrays: true
+        }
+      })
       
+      const response = await Bookings.aggregate(query)
+      return response
     } catch (error) {
       return []
     }
@@ -70,9 +82,9 @@ module.exports = {
               booking_phone: 1,
               booking_total: 1,
               booking_social: 1,
-              booking_discount:1,
-              booking_color:1,
-              booking_remark:1,
+              booking_discount: 1,
+              booking_color: 1,
+              booking_remark: 1,
               booking_date: 1,
               "booking_lists._id": "$booking_lists._id",
               "booking_lists.lists_id": "$booking_lists.lists_id",
@@ -84,7 +96,7 @@ module.exports = {
             }
           }
         ])
-        return (response&&response.length > 0) ? response[0]: null
+        return (response && response.length > 0) ? response[0] : null
       } else {
         return null
       }

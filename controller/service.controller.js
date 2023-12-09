@@ -29,7 +29,9 @@ module.exports = {
         detail: {
           discount: x.booking_discount.text,
           phone: x.booking_phone,
-          social: x.booking_social
+          social: x.booking_social,
+          lists_name:  x.booking_lists ? x.booking_lists.lists_name: null,
+          lists_total: x.booking_lists ? x.booking_lists.lists_price: null,
         }
       }))
       
