@@ -27,6 +27,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       let form = req.body
+      
       if (form.booking_name && form.booking_lists_id && form.booking_total && form.booking_date) {
         if (form.booking_date) {
           let check = await Bookings.findOne({ booking_date: form.booking_date })

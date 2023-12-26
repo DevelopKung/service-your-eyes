@@ -13,9 +13,9 @@ let bookings = new Schema({
   booking_color: { type: String, default: null },
   booking_remark: { type: String, default: null },
   booking_discount: {
-    id: { type: Number, default: null, require: true },
+    // id: { type: Number, default: null, require: true },
     value: { type: Number, default: null },
-    text: { type: String, default: null },
+    // text: { type: String, default: null },
     type: { type: String, default: null },
   },
   booking_total: { type: Number, default: null, require: true },
