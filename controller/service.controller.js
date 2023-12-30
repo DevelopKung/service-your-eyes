@@ -31,6 +31,8 @@ module.exports = {
         name: x.booking_name,
         remark: x.booking_remark,
         total: x.booking_total,
+        mascara: x.booking_mascara,
+        status: x.booking_status,
         detail: {
           discount: x.booking_discount.text,
           phone: x.booking_phone,

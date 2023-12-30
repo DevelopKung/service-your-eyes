@@ -19,6 +19,8 @@ let bookings = new Schema({
     type: { type: String, default: null },
   },
   booking_total: { type: Number, default: null, require: true },
+  booking_status: { type: String, default: null },
+  booking_mascara: { type: Boolean, default: false },
   booking_date: {
     start: { type: Date, default: null, require: true },
     end: { type: Date, default: null, require: true },

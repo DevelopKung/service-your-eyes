@@ -63,7 +63,9 @@ module.exports = {
       booking_social,
       booking_discount,
       booking_color,
-      booking_remark
+      booking_remark,
+      booking_mascara,
+      booking_status
     } = req.body
     if (_id && booking_name && booking_lists_id && booking_total && booking_date) {
       const update = { 
@@ -78,6 +80,8 @@ module.exports = {
           booking_discount,
           booking_color,
           booking_remark,
+          booking_mascara,
+          booking_status,
           updated_date: new Date()
         } 
       }

@@ -85,6 +85,8 @@ module.exports = {
               booking_discount: 1,
               booking_color: 1,
               booking_remark: 1,
+              booking_mascara: 1,
+              booking_status: 1,
               "booking_date.start": 1,
               "booking_date.end": 1,
               "booking_lists._id": "$booking_lists._id",
