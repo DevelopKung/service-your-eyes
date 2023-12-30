@@ -34,7 +34,7 @@ module.exports = {
         mascara: x.booking_mascara,
         status: x.booking_status,
         detail: {
-          discount: x.booking_discount.text,
+          discount: `${x.booking_discount.value} ${x.booking_discount.type == 'percent'? '%': 'บ.'}`,
           phone: x.booking_phone,
           social: x.booking_social,
           lists_name:  x.booking_lists ? x.booking_lists.lists_name: null,
