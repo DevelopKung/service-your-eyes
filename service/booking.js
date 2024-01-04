@@ -3,7 +3,7 @@ const Bookings = db.Bookings;
 const momentTimezone = require('moment-timezone').tz('Asia/Bangkok')
 const moment = require('moment')
 const ObjectId = require('mongodb').ObjectId;
-
+const _ = require('lodash')
 module.exports = {
   queryData: async (params) => {
     try {
@@ -49,7 +49,8 @@ module.exports = {
         }
       })
       
-      const response = await Bookings.aggregate(query)
+      let response = await Bookings.aggregate(query)
+      response = _.sortBy(response, ['booking_status', 'booking_date.start'])
       return response
     } catch (error) {
       return []
