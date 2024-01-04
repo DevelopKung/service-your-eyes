@@ -15,10 +15,13 @@ const register = require('./register.router');
 router.use('/register', register);
 
 const lists = require('./lists.router');
-router.use('/lists', lists);
+router.use('/lists', authJwt, lists);
 
 const booking = require('./booking.router');
-router.use('/booking', booking);
+router.use('/booking', authJwt, booking);
+
+const expenses = require('./expenses.router');
+router.use('/expenses', authJwt, expenses);
 
 const service = require('./service.router');
 router.use('/service', service);

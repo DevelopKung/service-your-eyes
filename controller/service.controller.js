@@ -1,6 +1,6 @@
 const msg = require("../json/msg.json");
 const db = require("../models");
-const Bookings = db.Bookings;
+const Expenses = db.Expenses;
 const service = require("../service/booking");
 const moment = require('moment')
 
@@ -21,8 +21,19 @@ module.exports = {
   },
   calendar: async (req, res) => {
     try {
-      let response = await service.queryData()
-      const payload = response.map(x => ({
+      const response = await service.queryData()
+      const result = await Expenses.find()
+      const expenses = result.map(x => ({
+        id: x._id,
+        color: null,
+        start: moment(x.exp_date),
+        end: moment(x.exp_date),
+        timed: true,
+        name: x.exp_name,
+        total: x.exp_price,
+        type: 'expenses'
+      }))
+      const booking = response.map(x => ({
         id: x._id,
         color: x.booking_color,
         start: moment(x.booking_date.start),
@@ -39,8 +50,11 @@ module.exports = {
           social: x.booking_social,
           lists_name:  x.booking_lists ? x.booking_lists.lists_name: null,
           lists_total: x.booking_lists ? x.booking_lists.lists_price: null,
-        }
+        },
+        type: 'booking'
       }))
+
+      const payload = Object.assign(booking,expenses)
       
       res.status(200).json({ status: true, message: msg.success, payload })
     } catch (error) {

@@ -20,6 +20,13 @@ module.exports = {
       menu_code: "lists",
       route: "/lists",
       icon: "mdi-tag-plus-outline",
+    },
+    {
+      menu_type: "menu",
+      title: "รายจ่าย",
+      menu_code: "expenses",
+      route: "/expenses",
+      icon: "mdi-trending-down",
     }]
 
     res.status(200).send({ status: true, data: list_menu });
