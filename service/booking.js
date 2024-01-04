@@ -34,6 +34,7 @@ module.exports = {
         }
       }
 
+      query.push({ $limit : 1000 })
       query.push({
         $lookup: {
           from: db.Lists.collection.collectionName,
