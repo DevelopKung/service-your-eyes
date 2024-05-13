@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 })
 
 if (config.server_port === 443) {
-  // serve the API with signed certificate on 443 (SSL/HTTPS) port
   const https = require('https');
   const httpsServer = https.createServer({
     key: fs.readFileSync(config.server_key_file),
