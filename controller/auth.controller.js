@@ -7,7 +7,7 @@ const fc = require("../service/function");
 
 module.exports = {
   login: async (req, res) => {
-    let time = "24h";
+    let time = "7d";
     const { username, password } = req.body
     
     try {
